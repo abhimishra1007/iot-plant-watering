@@ -1,0 +1,15 @@
+# C++ build output
+controller/build/
+
+# Local config and data
+controller/plant.conf
+data/
+*.db
+*.db-wal
+*.db-shm
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plant Monitor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+<body data-threshold="{{ threshold }}" data-target="{{ target }}">
+  <header>
+    <h1>Plant Monitor</h1>
+    <label>Window
+      <select id="window">
+        <option value="1">1 hour</option>
+        <option value="6">6 hours</option>
+        <option value="24" selected>24 hours</option>
+        <option value="168">7 days</option>
+        <option value="720">30 days</option>
+      </select>
+    </label>
+  </header>
+
+  <section class="tiles">
+    <div class="tile"><span class="label">Soil moisture</span><span id="moisture" class="value">--</span></div>
+    <div class="tile"><span class="label">Pump</span><span id="pump" class="value">--</span></div>
+    <div class="tile"><span class="label">Last watered</span><span id="last" class="value">--</span></div>
+    <div class="tile"><span class="label">Total runs</span><span id="runs" class="value">--</span></div>
+  </section>
+
+  <section class="card">
+    <h2>Soil moisture</h2>
+    <div class="chart"><canvas id="moistureChart"></canvas></div>
+  </section>
+
+  <section class="card">
+    <h2>Watering history</h2>
+    <div class="chart"><canvas id="eventsChart"></canvas></div>
+    <table>
+      <thead><tr><th>Started</th><th>Duration</th><th>Moisture</th><th>Stopped by</th></tr></thead>
+      <tbody id="eventsTable"></tbody>
+    </table>
+  </section>
+
+  <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+</body>
+</html>

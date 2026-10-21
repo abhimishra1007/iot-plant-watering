@@ -1,0 +1,20 @@
+# Copy to plant.conf and adjust. Run `plant_controller --config plant.conf --calibrate` and note the raw value
+# with the probe in dry air (dry_raw) and in a cup of water (wet_raw).
+
+spi_device = /dev/spidev0.0
+adc_channel = 0
+gpio_chip = /dev/gpiochip0
+relay_line = 17            # BCM numbering
+relay_active_low = true
+
+dry_raw = 820
+wet_raw = 410
+
+threshold_pct = 35
+target_pct = 55
+max_runtime_s = 15
+cooldown_s = 600
+samples_per_reading = 8
+
+sample_interval_s = 5
+database = ../data/plant.db
